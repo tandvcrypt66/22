@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Todo List</h2>
+<input id="task"><button onclick="add()">Add</button>
+<ul id="list"></ul>
+
+<script>
+let tasks=[];
+function add(){
+  let t=document.getElementById("task").value;
+  if(!t) return;
+  tasks.push(t);
+  render();
+}
+function render(){
+  list.innerHTML=tasks.map((t,i)=>
+    `<li onclick="del(${i})">${t}</li>`
+  ).join("");
+}
+function del(i){
+  tasks.splice(i,1);
+  render();
+}
+</script>
+</body>
+</html>
